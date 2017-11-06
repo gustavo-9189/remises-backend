@@ -30,10 +30,16 @@ public class ProvinciaController {
     @GetMapping
     public ResponseEntity<List<Provincia>> listAllProvincias() {
 		LOGGER.info("Recuperando todas las provincias");
-    	List<Provincia> provincias = (List<Provincia>) this.repository.findAll();
-        if (provincias.isEmpty()) {
-            return new ResponseEntity<List<Provincia>>(HttpStatus.NO_CONTENT);
-        }
+		List<Provincia> provincias = null;
+		try {
+	    	provincias = (List<Provincia>) this.repository.findAll();
+	    	provincias.size();             // se hace esto para evitar el LazyException...
+	        if (provincias.isEmpty()) {
+	            return new ResponseEntity<List<Provincia>>(HttpStatus.NO_CONTENT);
+	        }			
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
         return new ResponseEntity<List<Provincia>>(provincias, HttpStatus.OK);
     }
 
@@ -56,9 +62,11 @@ public class ProvinciaController {
     @PostMapping
     public ResponseEntity<Void> createProvincias(@RequestBody List<Provincia> provincias, UriComponentsBuilder ucBuilder) {
         LOGGER.info("Creando Provincias");
-
-        this.repository.save(provincias);
-
+        try {
+            this.repository.save(provincias);
+		} catch (Exception e) {
+			LOGGER.error(e);
+		}
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
     
