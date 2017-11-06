@@ -33,7 +33,6 @@ public class ProvinciaController {
 		List<Provincia> provincias = null;
 		try {
 	    	provincias = (List<Provincia>) this.repository.findAll();
-	    	provincias.size();             // se hace esto para evitar el LazyException...
 	        if (provincias.isEmpty()) {
 	            return new ResponseEntity<List<Provincia>>(HttpStatus.NO_CONTENT);
 	        }			
