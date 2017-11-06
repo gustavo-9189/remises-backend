@@ -1,8 +1,8 @@
-# Las siguientes carpetas seran ingnoradas por Git
+# Directorios ingnorados por Git
 .settings/
 target/
 
-# Los siguientes archivos seran ignorados por Git
+# Archivos ignorados por Git
 .classpath
 .project
 *~
