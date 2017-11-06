@@ -1,0 +1,9 @@
+# Las siguientes carpetas seran ingnoradas por Git
+.settings/
+target/
+
+# Los siguientes archivos seran ignorados por Git
+.classpath
+.project
+*~
+*.[oa]
