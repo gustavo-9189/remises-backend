@@ -27,7 +27,7 @@ public class Provincia {
 	@Size(max = 50)
 	private String nombre;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_PROVINCIA")
 	private List<Ciudad> ciudades;
 	
