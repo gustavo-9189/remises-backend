@@ -58,8 +58,11 @@ public class Cliente {
 	@Column(name = "CODIGO_POSTAL")
 	private Integer codigoPostal;
 	
-	@Size(max = 50)
-	private String ciudad;
+	@Max(99)
+	private Integer provincia;
+	
+	@Max(999999999)
+	private Integer ciudad;
 	
 	@Size(max = 20)
 	private String latitud;
@@ -139,11 +142,19 @@ public class Cliente {
 		this.codigoPostal = codigoPostal;
 	}
 
-	public String getCiudad() {
+	public Integer getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Integer provincia) {
+		this.provincia = provincia;
+	}
+
+	public Integer getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(String ciudad) {
+	public void setCiudad(Integer ciudad) {
 		this.ciudad = ciudad;
 	}
 

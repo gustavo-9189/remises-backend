@@ -60,7 +60,7 @@ public class ClienteControllerTest {
         RestTemplate restTemplate = new RestTemplate();
         Cliente cliente = new Cliente();
         cliente.setApellido("Martinez");
-        cliente.setCiudad("Gonzalez Catan");
+        cliente.setCiudad(1);
         cliente.setCodigoPostal(1759);
         cliente.setDireccion("Dragones 2505");
         cliente.setDni(34235783);
@@ -81,7 +81,7 @@ public class ClienteControllerTest {
         RestTemplate restTemplate = new RestTemplate();
         Cliente cliente  = new Cliente();
         cliente.setApellido("apellidoActualizado");
-        cliente.setCiudad("ciudadActualizada");
+        cliente.setCiudad(2);
         cliente.setCodigoPostal(1111);
         cliente.setDireccion("direccionActualizada");
         cliente.setDni(40111222);

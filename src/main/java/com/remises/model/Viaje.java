@@ -1,7 +1,6 @@
 package com.remises.model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -69,14 +68,15 @@ public class Viaje {
 	@Column(name = "LONGITUD_DE")
 	private String longitudDestino;
 
-//	@NotNull
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date fecha;
+	private Calendar fecha;
 
-//	@NotNull
-	@DateTimeFormat(pattern = "HH:mm:ss")
-	private Time hora;
+	@NotNull
+//	@Temporal(TemporalType.TIME)
+//	@DateTimeFormat(pattern = "HH:mm")
+	private String hora;
 
 	public Long getId() {
 		return id;
@@ -158,19 +158,19 @@ public class Viaje {
 		this.longitudDestino = longitudDestino;
 	}
 
-	public Date getFecha() {
+	public Calendar getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(Calendar fecha) {
 		this.fecha = fecha;
 	}
 
-	public Time getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 

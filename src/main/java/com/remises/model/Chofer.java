@@ -64,11 +64,11 @@ public class Chofer {
 	@Column(name = "CODIGO_POSTAL")
 	private Integer codigoPostal;
 	
-	@Size(max = 50)
-	private String provincia;
+	@Max(99)
+	private Integer provincia;
 
-	@Size(max = 50)
-	private String ciudad;
+	@Max(999999999)
+	private Integer ciudad;
 	
 	@Size(max = 20)
 	private String latitud;
@@ -92,12 +92,12 @@ public class Chofer {
 		this.automovil = automovil;
 	}
 
-	public List<Viaje> getViaje() {
+	public List<Viaje> getViajes() {
 		return viajes;
 	}
 
-	public void setViaje(List<Viaje> viaje) {
-		this.viajes = viaje;
+	public void setViajes(List<Viaje> viajes) {
+		this.viajes = viajes;
 	}
 
 	public String getNombre() {
@@ -156,19 +156,19 @@ public class Chofer {
 		this.codigoPostal = codigoPostal;
 	}
 
-	public String getProvincia() {
+	public Integer getProvincia() {
 		return provincia;
 	}
 
-	public void setProvincia(String provincia) {
+	public void setProvincia(Integer provincia) {
 		this.provincia = provincia;
 	}
 
-	public String getCiudad() {
+	public Integer getCiudad() {
 		return ciudad;
 	}
 
-	public void setCiudad(String ciudad) {
+	public void setCiudad(Integer ciudad) {
 		this.ciudad = ciudad;
 	}
 
