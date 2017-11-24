@@ -9,16 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.remises.model.Usuario;
 import com.remises.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping(value = "/login")
+@RequestMapping("/login")
 public class UsuarioController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class UsuarioController {
         return new ResponseEntity<Usuario>(existe, HttpStatus.OK);
     }
 	
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
         LOGGER.info("Actualizando usuario " + id);
 
@@ -62,7 +62,7 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/grabar", method = RequestMethod.POST)
+	@PostMapping("/grabar")
 	public ResponseEntity<Usuario> grabar(@RequestBody Usuario login) {
         LOGGER.info("Iniciando Sesion " + login.getUsuario());
 

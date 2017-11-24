@@ -11,43 +11,48 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.remises.model.Viaje;
 import com.remises.repository.ViajeRepository;
+import com.remises.response.ViajeResponse;
+import com.remises.service.ViajeService;
 
 @RestController
-@RequestMapping(value = "/viaje")
+@RequestMapping("/viaje")
 public class ViajeController {
 
 	@Autowired
     private ViajeRepository repository;
 	
+	@Autowired
+	private ViajeService service;
+	
 	private static final Logger LOGGER = Logger.getLogger(ViajeController.class);
 
 	@GetMapping
-    public ResponseEntity<List<Viaje>> listAllViajes() {
+    public ResponseEntity<List<ViajeResponse>> listAllViajes() {
     	LOGGER.info("Recuperando todos los viajes");
-        List<Viaje> viajes = (List<Viaje>) this.repository.findAll();
+        List<ViajeResponse> viajes = this.service.listarViajes();
         if (viajes.isEmpty()) {
-            return new ResponseEntity<List<Viaje>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<List<ViajeResponse>>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Viaje>>(viajes, HttpStatus.OK);
+        return new ResponseEntity<List<ViajeResponse>>(viajes, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Viaje> getViaje(@PathVariable("id") Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ViajeResponse> getViaje(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando Viaje con id " + id);
-        Viaje viaje = this.repository.findOne(id);
+        ViajeResponse viaje = this.service.getViaje(id);
         if (viaje == null) {
             LOGGER.error("Viaje con id " + id + " no encontrado");
-            return new ResponseEntity<Viaje>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<ViajeResponse>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Viaje>(viaje, HttpStatus.OK);
+        return new ResponseEntity<ViajeResponse>(viaje, HttpStatus.OK);
     }
 
     @PostMapping
@@ -61,7 +66,7 @@ public class ViajeController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping("/{id}")
     public ResponseEntity<Viaje> updateViaje(@PathVariable("id") Long id, @RequestBody Viaje viaje) {
         LOGGER.info("Actualizando viaje " + id);
 
@@ -74,7 +79,7 @@ public class ViajeController {
         return new ResponseEntity<Viaje>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public ResponseEntity<Viaje> deleteViaje(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando y borrando el viaje con id " + id);
 

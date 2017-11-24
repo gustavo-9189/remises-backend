@@ -7,5 +7,5 @@ import com.remises.model.Viaje;
 
 @Repository
 public interface ViajeRepository extends CrudRepository<Viaje, Long> {
-
+	
 }

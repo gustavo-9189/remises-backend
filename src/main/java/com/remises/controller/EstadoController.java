@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -19,7 +18,7 @@ import com.remises.model.Estado;
 import com.remises.repository.EstadoRepository;
 
 @RestController
-@RequestMapping(value = "/estado")
+@RequestMapping("/estado")
 public class EstadoController {
 	
     @Autowired
@@ -42,7 +41,7 @@ public class EstadoController {
         return new ResponseEntity<List<Estado>>(estados, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public ResponseEntity<Estado> getEstado(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando Estado con id " + id);
         Estado estado = null;

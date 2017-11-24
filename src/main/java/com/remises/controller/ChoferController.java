@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -21,7 +21,7 @@ import com.remises.model.Chofer;
 import com.remises.repository.ChoferRepository;
 
 @RestController
-@RequestMapping(value = "/chofer")
+@RequestMapping("/chofer")
 public class ChoferController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class ChoferController {
         return new ResponseEntity<List<Chofer>>(choferes, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public ResponseEntity<Chofer> getChofer(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando Chofer con id " + id);
         Chofer chofer = this.repository.findOne(id);
@@ -67,7 +67,7 @@ public class ChoferController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping("/{id}")
     public ResponseEntity<Chofer> updateChofer(@PathVariable("id") Long id, @RequestBody Chofer chofer) {
         LOGGER.info("Actualizando chofer " + id);
 
@@ -80,7 +80,7 @@ public class ChoferController {
         return new ResponseEntity<Chofer>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public ResponseEntity<Chofer> deleteChofer(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando y borrando el chofer con id " + id);
 

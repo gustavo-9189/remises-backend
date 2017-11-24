@@ -14,7 +14,7 @@ import com.remises.model.Viaje;
 import com.remises.repository.ViajeRepository;
 
 @RestController
-@RequestMapping(value = "/reporte")
+@RequestMapping("/reporte")
 public class ReportesController {
 
 	@Autowired

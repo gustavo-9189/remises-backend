@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -19,7 +18,7 @@ import com.remises.model.Ciudad;
 import com.remises.repository.CiudadRepository;
 
 @RestController
-@RequestMapping(value = "/ciudad")
+@RequestMapping("/ciudad")
 public class CiudadController {
 
     @Autowired
@@ -37,7 +36,7 @@ public class CiudadController {
         return new ResponseEntity<List<Ciudad>>(ciudades, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public ResponseEntity<Ciudad> getCity(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando Ciudad con id " + id);
         Ciudad ciudad = this.repository.findOne(id);

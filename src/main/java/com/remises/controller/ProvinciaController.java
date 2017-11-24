@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -19,7 +18,7 @@ import com.remises.model.Provincia;
 import com.remises.repository.ProvinciaRepository;
 
 @RestController
-@RequestMapping(value = "/provincia")
+@RequestMapping("/provincia")
 public class ProvinciaController {
 
     @Autowired
@@ -42,7 +41,7 @@ public class ProvinciaController {
         return new ResponseEntity<List<Provincia>>(provincias, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public ResponseEntity<Provincia> getProvincia(@PathVariable("id") Long id) {
         LOGGER.info("Recuperando Provincia con id " + id);
         Provincia provincia = null;
