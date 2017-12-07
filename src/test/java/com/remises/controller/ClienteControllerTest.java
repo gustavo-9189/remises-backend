@@ -1,24 +1,29 @@
 //package com.remises.controller;
 // 
-//import java.net.URI;
 //import java.util.LinkedHashMap;
 //import java.util.List;
 //
 //import org.apache.log4j.Logger;
 //import org.junit.Test;
+//import org.junit.runner.RunWith;
+//import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //import org.springframework.web.client.RestTemplate;
 //
 //import com.remises.global.Constantes;
-//import com.remises.model.Cliente;
 //
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes = {})
 //public class ClienteControllerTest {
-//
+//	
+//	private ClienteController cliente;
+//	
 //	private static final Logger LOGGER = Logger.getLogger(ClienteController.class);
 //
 //    /* GET */
 //	@Test
 //    @SuppressWarnings("unchecked")
-//	private static void listAllClientes() {
+//	private void listAllClientes() {
 //        LOGGER.info("Testing listAllClientes API-----------");
 //
 //        RestTemplate restTemplate = new RestTemplate();
