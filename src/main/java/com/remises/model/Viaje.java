@@ -20,6 +20,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "VIAJE")
@@ -70,12 +71,11 @@ public class Viaje {
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Calendar fecha;
 
 	@NotNull
-//	@Temporal(TemporalType.TIME)
-//	@DateTimeFormat(pattern = "HH:mm")
+	@Size(max = 10)
 	private String hora;
 	
 	@NotNull
@@ -88,19 +88,23 @@ public class Viaje {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	@JsonIgnore
 	public Chofer getChofer() {
 		return chofer;
 	}
 
+	@JsonProperty
 	public void setChofer(Chofer chofer) {
 		this.chofer = chofer;
 	}
 
+	@JsonIgnore
 	public Cliente getCliente() {
 		return cliente;
 	}
 
+	@JsonProperty
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}

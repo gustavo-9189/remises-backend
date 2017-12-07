@@ -1,0 +1,62 @@
+[
+    {
+        "automovil": {
+            "marca": "Ferrari",
+            "modelo": "F2002",
+            "patente": "A 234 JTS",
+            "anio": 2002
+        },
+        "viajes": [],
+        "nombre": "Michael ",
+        "apellido": "Schumacher",
+        "dni": 34345355,
+        "telefono": "(011) 2989 8998",
+        "email": "michael@schumacher.com",
+        "direccion": "Alemania 3422",
+        "codigoPostal": 5522,
+        "provincia": 1,
+        "ciudad": 1,
+        "latitud": null,
+        "longitud": null
+    },
+    {
+        "automovil": {
+            "marca": "Mercedes Benz",
+            "modelo": "Flecha de Plata",
+            "patente": "A 234 GP5",
+            "anio": 1957
+        },
+        "viajes": [],
+        "nombre": "Juan Manuel",
+        "apellido": "Fangio",
+        "dni": 10423423,
+        "telefono": "(011) 3422 2422",
+        "email": "juanmanuel@fangio.com",
+        "direccion": "Balcarce 2314",
+        "codigoPostal": 3333,
+        "provincia": 1,
+        "ciudad": 55,
+        "latitud": null,
+        "longitud": null
+    },
+    {
+        "automovil": {
+            "marca": "McLaren",
+            "modelo": "Mercedes ",
+            "patente": "FR 123 WE",
+            "anio": 1992
+        },
+        "viajes": [],
+        "nombre": "Alain",
+        "apellido": "Prost",
+        "dni": 55323593,
+        "telefono": "(234) 2342 2776",
+        "email": "alain@prost.com.fr",
+        "direccion": "Marbella 2314",
+        "codigoPostal": 4645,
+        "provincia": 1,
+        "ciudad": 416,
+        "latitud": null,
+        "longitud": null
+    }
+]
