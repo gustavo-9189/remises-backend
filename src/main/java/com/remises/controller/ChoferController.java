@@ -49,7 +49,7 @@ public class ChoferController {
         }
         return new ResponseEntity<Chofer>(chofer, HttpStatus.OK);
     }
-
+    
     @PostMapping
     public ResponseEntity<Void> createChofer(@RequestBody Chofer chofer, UriComponentsBuilder ucBuilder) {
         LOGGER.info("Creando Chofer " + chofer.getNombre() + " " + chofer.getApellido());

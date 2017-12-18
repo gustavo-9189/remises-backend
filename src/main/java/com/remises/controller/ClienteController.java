@@ -49,7 +49,7 @@ public class ClienteController {
         }
         return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     }
-
+    
     @PostMapping
     public ResponseEntity<Void> createCliente(@RequestBody Cliente cliente, UriComponentsBuilder ucBuilder) {
         LOGGER.info("Creando Cliente " + cliente.getNombre() + " " + cliente.getApellido());
