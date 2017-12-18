@@ -28,7 +28,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     /***
 	 * Dentro de este metodo definimos el Contexto de Spring
 	 * que se encuentra en la clase: SpringConfig.class
-	 * Es el contextConfigLocation usado para indicar donde se encuentra la configuración
+	 * Es el contextConfigLocation usado para indicar donde se encuentra la configuracion
 	 */
     @Override
     protected Class<?>[] getServletConfigClasses() {
@@ -37,8 +37,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
   
     /***
      * Es el antiguo tag: <servlet-mapping> del web.xml
-     * Sirve para definir las URL que serán admitidas por este Servlet, 
-     * define el patrón de las URL válidas, en este caso "/" 
+     * Sirve para definir las URL que seran admitidas por este Servlet, 
+     * define el patron de las URL validas, en este caso "/" 
      * indica que se admiten todas las peticiones HTTP.
      */
     @Override
