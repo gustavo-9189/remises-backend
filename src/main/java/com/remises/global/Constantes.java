@@ -8,7 +8,7 @@ import org.springframework.core.env.Environment;
 public class Constantes {
 
 	@Autowired
-	private Environment entorno;
+	private static Environment entorno;
 
 	// DB Parameter
 	public static final String DB_DRIVER = entorno.getRequiredProperty("db.driver");
