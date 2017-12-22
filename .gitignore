@@ -1,6 +1,7 @@
 # Directorios ingnorados por Git
 .settings/
 target/
+WebContent/
 
 # Archivos ignorados por Git
 .classpath
