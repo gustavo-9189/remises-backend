@@ -10,7 +10,7 @@ public class Constantes {
 	@Autowired
 	private Environment entorno;
 
-	// DB Parameters
+	// DB Parameter
 	public static final String DB_DRIVER = entorno.getRequiredProperty("db.driver");
 	public static final String DB_URL = entorno.getRequiredProperty("db.url");
 	public static final String DB_USER = entorno.getRequiredProperty("db.username");
