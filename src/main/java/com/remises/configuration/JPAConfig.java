@@ -2,11 +2,10 @@ package com.remises.configuration;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -21,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 
  * @author Gustavo
  *
- * Configuracion de Hibernate y Spring Data JPA
+ * Configuracion de Spring Data JPA e Hibernate
  * Desde el archivo de properties
  * Ubicado en src/main/resources/remises.properties
  * 
@@ -33,19 +32,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class JPAConfig {
 
 	// DB Parameters
-	private static final String DRIVER = "db.driver";
-	private static final String URL = "db.url";
-	private static final String USER = "db.username";
-	private static final String PASSWORD = "db.password";
+	private @Value("${db.driver}") String driver;
+	private @Value("${db.url}") String url;
+	private @Value("${db.username}") String user;
+	private @Value("${db.password}") String password;
 
-	// Hibernate Parameters
-	private static final String PACKAGE_MODEL = "entitymanager.packages.to.scan";
-	private static final String NAME_PERSISTENCE = "entitymanager.name.persistence";
-	private static final boolean GENERATE_DDL = false;
-	private static final boolean LOGS_SQL = true;
-
-	@Autowired
-	private Environment entorno;
+	// JPA Parameters
+	private @Value("${entitymanager.packages.to.scan}") String packageModel;
+	private @Value("${entitymanager.name.persistence}") String namePersistence;
+	private @Value("${jpa.generate.ddl}") String generateDDL;
+	private @Value("${jpa.show_sql}") String logsSQL;
+	private @Value("${jpa.database}") String database;
 
 	/***
 	 * Retorna la configuracion necesaria para el datasource (la base de datos)
@@ -56,10 +53,10 @@ public class JPAConfig {
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(entorno.getRequiredProperty(DRIVER));
-        dataSource.setUrl(entorno.getRequiredProperty(URL));
-        dataSource.setUsername(entorno.getRequiredProperty(USER));
-        dataSource.setPassword(entorno.getRequiredProperty(PASSWORD));
+        dataSource.setDriverClassName(driver);
+        dataSource.setUrl(url);
+        dataSource.setUsername(user);
+        dataSource.setPassword(password);
         return dataSource;
 	}
 
@@ -76,8 +73,8 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-        factoryBean.setPackagesToScan(entorno.getRequiredProperty(PACKAGE_MODEL));
-        factoryBean.setPersistenceUnitName(entorno.getRequiredProperty(NAME_PERSISTENCE));
+        factoryBean.setPackagesToScan(packageModel);
+        factoryBean.setPersistenceUnitName(namePersistence);
         return factoryBean;
     }
 
@@ -90,9 +87,9 @@ public class JPAConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        jpaVendorAdapter.setGenerateDdl(GENERATE_DDL);
-        jpaVendorAdapter.setDatabase(Database.MYSQL);
-		jpaVendorAdapter.setShowSql(LOGS_SQL);
+        jpaVendorAdapter.setGenerateDdl(Boolean.parseBoolean(generateDDL));
+        jpaVendorAdapter.setDatabase(Database.valueOf(database));
+		jpaVendorAdapter.setShowSql(Boolean.parseBoolean(logsSQL));
         return jpaVendorAdapter;
     }
 

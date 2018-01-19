@@ -17,12 +17,12 @@ import com.remises.global.Constantes;
 
 public class ClienteControllerTest {
 
-	private static final String CTRL = "cliente";
+	private static final String CTRL = "/cliente";
 	
 	@Test
 	public void existPathNot404() throws ClientProtocolException, IOException {
 
-	   HttpUriRequest request = new HttpGet(Constantes.URI + CTRL);
+	   HttpUriRequest request = new HttpGet(Constantes.getURI(CTRL));
 	   HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
 	   assertThat(
