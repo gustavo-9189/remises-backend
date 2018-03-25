@@ -1,5 +1,5 @@
 package com.remises.controller;
- 
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -13,22 +13,18 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Test;
 
-import com.remises.global.Constantes;
 
 public class ClienteControllerTest {
 
-	private static final String CTRL = "/cliente";
-	
-	@Test
-	public void existPathNot404() throws ClientProtocolException, IOException {
-
-	   HttpUriRequest request = new HttpGet(Constantes.getURI(CTRL));
-	   HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
-
-	   assertThat(
-	     httpResponse.getStatusLine().getStatusCode(),
-	     equalTo(HttpStatus.SC_OK)
-	   );
-	}
+//	private static final String URI = "http://localhost:8080/remises-backend";
+//	private static final String CTRL = "/cliente";
+//
+//	@Test
+//	public void existPathNot404() throws ClientProtocolException, IOException {
+//		HttpUriRequest request = new HttpGet(URI.concat(CTRL));
+//		HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+//
+//		assertThat(httpResponse.getStatusLine().getStatusCode(), equalTo(HttpStatus.SC_OK));
+//	}
 
 }

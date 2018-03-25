@@ -7,21 +7,20 @@
 	<artifactId>remises-backend</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>Remis XXI</name>
-	<description>
-	  	Sistema de gestion de remiserias.
-  	</description>
+	<name>Remises</name>
+	<description>Sistema de gestion de remiserias</description>
 	<url>http://localhost:8080/remises-backend/</url>
 	<inceptionYear>2017</inceptionYear>
 
 	<!-- Propiedades a usar en las versiones de las dependencias -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>4.3.6.RELEASE</springframework.version>
+		<springframework.version>4.3.8.RELEASE</springframework.version>
 		<servlet.version>3.1.0</servlet.version>
 		<hibernate.version>5.2.10.Final</hibernate.version>
 		<jsonpath.version>2.2.0</jsonpath.version>
 		<springsecurity.version>4.2.3.RELEASE</springsecurity.version>
+		<swagger.version>2.8.0</swagger.version>
 	</properties>
 
 	<!-- Dependencias a descargar -->
@@ -54,6 +53,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 		<!-- Para mockear objetos -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -61,6 +61,7 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- Para los asserts de los response que devuelven JSON -->
 		<dependency>
 			<groupId>com.jayway.jsonpath</groupId>
@@ -74,6 +75,7 @@
 			<version>${jsonpath.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- Cliente http para test -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -132,6 +134,18 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.version}</version>
+		</dependency>
+
+		<!-- Para documentar y probar los servicios REST -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<!-- Para la subida de archivos multi-parte -->
